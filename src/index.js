@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Container from 'react-bootstrap/Container';
 
 const TITLE = 'Weather World'
 
@@ -62,27 +65,29 @@ class WeatherUpdate extends React.Component {
 class DisplayWeather extends React.Component {
   render() {
     return (
-      <div>
-        <h1>Welcome to Weather World</h1>
-        <h2>Showing Current Weather for <u>{this.props.items.name}, {this.props.items.sys.country}</u></h2>
-        <p>
-          <b>Sky:</b> <u>{this.props.items.weather[0].main}</u>
-          <img src={'http://openweathermap.org/img/wn/' + this.props.items.weather[0].icon + '@2x.png'}
-          alt={this.props.items.weather[0].description}
-          height='50'
-          width='50'/>
-        </p>
-        <p>
-          <b>Temperature: </b> <u>{Math.round(this.props.items.main.temp)}°F | {Math.round((this.props.items.main.temp - 32) * (5/9))}°C</u>
-          , <b>Feels like: </b> <u>{Math.round(this.props.items.main.feels_like)}°F | {Math.round((this.props.items.main.feels_like - 32) * (5/9))}°C</u>
-        </p>
-        <p>
-          <b>Humidity: </b> <u>{Math.round(this.props.items.main.humidity)}%</u>
-        </p>
-        <p>
-          <b>Wind Speed:</b> <u>{this.props.items.wind.speed} mph</u>
-        </p>
-      </div>
+      <Container className="p-3">
+        <div>
+          <h1>Welcome to Weather World</h1>
+          <h2>Showing Current Weather for <u>{this.props.items.name}, {this.props.items.sys.country}</u></h2>
+          <p>
+            <b>Sky:</b> <u>{this.props.items.weather[0].main}</u>
+            <img src={'http://openweathermap.org/img/wn/' + this.props.items.weather[0].icon + '@2x.png'}
+            alt={this.props.items.weather[0].description}
+            height='50'
+            width='50'/>
+          </p>
+          <p>
+            <b>Temperature: </b> <u>{Math.round(this.props.items.main.temp)}°F | {Math.round((this.props.items.main.temp - 32) * (5/9))}°C</u>
+            , <b>Feels like: </b> <u>{Math.round(this.props.items.main.feels_like)}°F | {Math.round((this.props.items.main.feels_like - 32) * (5/9))}°C</u>
+          </p>
+          <p>
+            <b>Humidity: </b> <u>{Math.round(this.props.items.main.humidity)}%</u>
+          </p>
+          <p>
+            <b>Wind Speed:</b> <u>{this.props.items.wind.speed} mph</u>
+          </p>
+        </div>
+      </Container>
     )
   }
 }
